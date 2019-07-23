@@ -12,9 +12,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.jointheleague.graphical.robot.Robot;
+
 public class MyFirstSwingGUI {
 	public void run() {
-
+		JFrame objectJFrame = new JFrame("This is a JFrame");
+		objectJFrame.setVisible(true);
+		objectJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JPanel objectJPanel = new JPanel();
+		JLabel objectJLabel = new JLabel("A Lovely Greeting!!!");
+		objectJFrame.add(objectJPanel);
+		objectJPanel.add(objectJLabel);
+		objectJLabel.setIcon(loadImage());
+		objectJFrame.pack();
 		// 1. Create and initialize an object of the JFrame class
 
 		// 2. Set your JFrame object to be visible
@@ -36,7 +46,7 @@ public class MyFirstSwingGUI {
 
 		// 10. Pack your JFrame.
 
-		// 11. Run your program again. Do you see your message.
+		// 11. Run your program again. Do you see your message?
 
 		// 12. Use the loadImage method to set the icon of the JLabel object.
 

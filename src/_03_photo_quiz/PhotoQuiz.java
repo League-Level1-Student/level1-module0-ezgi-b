@@ -17,12 +17,41 @@ import javax.swing.JOptionPane;
 public class PhotoQuiz {
 
 	public void run() throws Exception {
-
+		int score = 0;
 		JFrame quizWindow = new JFrame();
 		quizWindow.setVisible(true);
+		
 		// This will make sure the program exits when you close the window
 		quizWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		String snailAddress = new String("https://upload.wikimedia.org/wikipedia/commons/6/69/Grapevinesnail_01.jpg");
+		
+		Component snailImage = createImage(snailAddress);
+		
+		quizWindow.add(snailImage);
+		
+		quizWindow.pack();
+		String answer = JOptionPane.showInputDialog("What is the scientific class of snails?");
+		if(answer.equals("Gastropoda")) {
+			JOptionPane.showMessageDialog(null, "CORRECT");
+			score+=1;
+		}else{
+			JOptionPane.showMessageDialog(null, "INCORRECT");
+		}
+		
+		quizWindow.remove(snailImage);
+		String firepawAddress = new String("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMFSrxTrxM9Qj9XMcQXsOcJw86o7eNcXu2w5KdX8Wnm-f8Ja2I");
+		Component firepawImage = createImage(firepawAddress);
+		quizWindow.add(firepawImage);
+		quizWindow.pack();
+		
+		String answerTwo = JOptionPane.showInputDialog("What is Firepaw's warrior name?");
+		if(answerTwo.equals("Fireheart")) {
+			JOptionPane.showMessageDialog(null, "CORRECT");
+			score+=1;
+		}else{
+			JOptionPane.showMessageDialog(null, "INCORRECT");
+		}
+		JOptionPane.showMessageDialog(null, "Your score is "+score);
 		// 1. find an image on the internet, and put its URL in a String
 		// variable (from your browser, right click on the image, and select
 		// “Copy Image Address”)
