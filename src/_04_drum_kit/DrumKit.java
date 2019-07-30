@@ -21,8 +21,26 @@ import javax.swing.JPanel;
 public class DrumKit implements MouseListener {
 
 	JLabel drumLabelWithImage;
+	JLabel cymbalLabelWithImage;
 
 	public void run() throws MalformedURLException {
+		String snareLocation = new String("snareDrum.jpeg");
+		String cymbalLocation = new String("cymbal.jpeg");
+		JFrame frame = new JFrame("Drum Kit");
+		frame.setVisible(true);
+		frame.setSize(800, 500);
+		JPanel panel = new JPanel();
+		frame.add(panel);
+		drumLabelWithImage = createLabelImage(snareLocation);
+		panel.add(drumLabelWithImage);
+		panel.setLayout(new GridLayout());
+		drumLabelWithImage.addMouseListener(this);
+		cymbalLabelWithImage = createLabelImage(cymbalLocation);
+		panel.add(cymbalLabelWithImage);
+		cymbalLabelWithImage.addMouseListener(this);
+		frame.pack();
+		
+		
 
 		// 1. Make a JFrame variable and initialize it using "new JFrame()"
 
@@ -60,12 +78,19 @@ public class DrumKit implements MouseListener {
 	}
 
 	public void mouseClicked(MouseEvent e) {
+		System.out.println("Mouse Clicked!");
 		// 14. Print "mouse clicked" to the console. Run your program and watch
 		// the console to see when this is printed.
 
 		JLabel drumClicked = (JLabel) e.getSource(); // This line gets the label
 														// that the mouse
 														// clicked on
+		if(drumClicked.equals(drumLabelWithImage)) {
+			playSound("drum.wav");
+		}
+		if(drumClicked.equals(cymbalLabelWithImage)) {
+			playSound("cymbal.wav");
+		}
 
 		// 15. Download a drum sound and drop it into your "default package".
 		// You can find it on freesound.org. To download it, log in as

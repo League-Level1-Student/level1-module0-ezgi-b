@@ -21,10 +21,10 @@ public class BodyPartQuiz {
 	// package,or if you prefer, get celebrity photos from the Internet,
 	// place them in the default package, and change the names below.
 
-	String firstImage = "src/body_part_quiz/arnold.jpeg";
-	String secondImage = "src/body_part_quiz/leonardo.jpeg";
-	String thirdImage = "src/body_part_quiz/morgan.jpeg";
-	String fourthImage = "src/body_part_quiz/jack.jpeg";
+	String firstImage = "src/_05_body_part_quiz/arnold.jpeg";
+	String secondImage = "src/_05_body_part_quiz/leonardo.jpeg";
+	String thirdImage = "src/_05_body_part_quiz/morgan.jpeg";
+	String fourthImage = "src/_05_body_part_quiz/jack.jpeg";
 
 	JFrame window = new JFrame();
 	JPanel panel = new JPanel();
@@ -39,24 +39,40 @@ public class BodyPartQuiz {
 		imageIterator = imageList.iterator();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.add(panel);
-
+		
 		// 3. Change the size of the window so that you can only see part of the
 		// image.
-		window.setSize(500, 500);
+		window.setSize(100, 100);
 
 		showNextImage();
 
 	}
 
 	private void startQuiz() {
+		int score = 0;
 
 		// 1. Make an int variable to hold the score.
 
 		// 2. Set the size of the window in the initializeGui() method 
 
 		// 4. Ask the user who this person is and store their answer
-		String guess = JOptionPane.showInputDialog("who is this?");
-
+		ArrayList<String> imageNames = new ArrayList<String>();
+		imageNames.add("Arnold");
+		imageNames.add("Leonardo");
+		imageNames.add("Morgan");
+		imageNames.add("Jack");
+		for(int i = 0; i<imageNames.size(); i++) {
+			String guess = JOptionPane.showInputDialog("Who is this?");
+			if(guess.equalsIgnoreCase(imageNames.get(i))) {
+				score++;
+				JOptionPane.showMessageDialog(null, "That is correct!\nYour score is "+score+".");
+			}else {
+				JOptionPane.showMessageDialog(null, "That is incorrect. This person is "+imageNames.get(i)+".\nYour score is still "+score+".");
+				
+			}
+			
+			showNextImage();
+		}
 		// 5. Check their answer. If they guessed correctly:
 		// -- Tell them they are right and increase the score by 1
 
@@ -64,7 +80,7 @@ public class BodyPartQuiz {
 		// -- Tell them they are wrong and who the person is
 
 		// 7. Use the showNextImage() method below to get the next image
-		showNextImage();
+		
 
 		// 8. .... repeat 4-7 for all your images.....
 
