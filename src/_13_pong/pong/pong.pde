@@ -12,10 +12,10 @@ void setup(){
 }
 
 int ballX=10;
-int addToX=2;
+int addToX=3;
 
 int ballY=10;
-int addToY=2;
+int addToY=3;
 
 void draw(){
   image(backgroundImage,0,0);
@@ -31,21 +31,25 @@ void draw(){
   ellipse(ballX,ballY,30,30);
   
   if(ballX>=width-10){
-    addToX=-2;
+    addToX=-3;
   }
   if(ballX<=10){
-    addToX=2;
+    addToX=3;
   }
   
   
   
   
   if(ballY>=height-10){
-    addToY=-2;
+    addToY=-3;
     sound.trigger();
   }
   if(ballY<=10){
-    addToY=2;
+    addToY=3;
+  }
+  
+  if(ballY>=575 && ballX>=mouseX-40 && ballX<=mouseX+40){
+    addToY=addToY*-1;
   }
   
   ballX+=addToX;
